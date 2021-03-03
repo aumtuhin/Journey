@@ -1,10 +1,9 @@
 {
-  "name": "travel",
+  "name": "journey",
   "version": "1.0.0",
   "description": "an intelligent based travel recommendation system",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "me",
