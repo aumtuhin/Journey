@@ -12,3 +12,6 @@ The app is build with these following technologies:
 
 ## Home Page
 ![home page](./docs/images/home.png)
+
+## Top Places in NRW
+![Top Places in NRW](./docs/images/top-places-nrw.png)
