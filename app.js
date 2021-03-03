@@ -56,7 +56,6 @@ app.use(function (req, res, next) {
 app.use('/', index);
 app.use('/dashboard', dashboard);
 app.use('/destination', destination);
-app.use('/user', user);
 
 //listen server
 app.listen(port, () => {

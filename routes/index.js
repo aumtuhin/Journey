@@ -37,7 +37,6 @@ router.get('/', async (req, res, next) => {
                                             city5Places: city5Places,
                                             city6Places: city6Places,
                                             city7Places: city7Places,
-                                            username: 'Johndoe'
                                         });
                                     });
                                 });
