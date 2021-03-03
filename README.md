@@ -15,3 +15,9 @@ The app is build with these following technologies:
 
 ## Top Places in NRW
 ![Top Places in NRW](./docs/images/top-places-nrw.png)
+
+## Top Places by City
+![Top Places](./docs/images/top-places-city.png)
+
+## Place Details Page
+![Place Details](./docs/images/place-details.png)
