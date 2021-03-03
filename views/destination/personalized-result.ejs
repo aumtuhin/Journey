@@ -1,0 +1,48 @@
+<%- include('../layouts/header') %>
+<section id="places">
+    <div class="container">
+        <div class="heading text-center">
+            <h2>Top Places in <%= city%> for <%= days %> days</h2>
+        </div>
+        <% if(places === undefined || places.length == 0) { %>
+        <div class="no-result text-center">
+            <img class="img img-responsive" src="https://www.eyouthegypt.com/uploads/no_result.gif" alt="">
+        </div>
+        <% } %>
+        <div class="row">
+            <% places.forEach(function(place){ %>
+            <div class="col-md-3">
+                <div class="card" style="width: 17rem;">
+                    <img src="<%= place.imgUrl%>" class="card-img-top img-responsive" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= place.name%></h5>
+                      <p class="card-text"><%= place.description.replace(/^(.{100}[^\s]*).*/, "$1"); %> ...</p>
+                      <a href="/destination/place/<%= place.id %>" class="btn btn-primary">See More..</a>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+        <% if(places2 != null) { %>
+            <div class="heading text-center">
+                <h2>We suggest some places near NRW</h2>
+            </div>
+        <div class="row">
+            <% places2.forEach(function(place){ %>
+            <div class="col-md-3">
+                <div class="card" style="width: 17rem;">
+                    <img src="<%= place.imgUrl%>" class="card-img-top img-responsive" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= place.name%></h5>
+                      <p class="card-text"><%= place.description.replace(/^(.{100}[^\s]*).*/, "$1"); %> ...</p>
+                      <a href="/destination/place/<%= place.id %>" class="btn btn-primary">See More..</a>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+        <% } %>
+      
+    </div>
+</section>
+<%- include('../layouts/footer') %>

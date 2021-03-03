@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Journey An Intelligent based travel recommendation system</title>
+<!-- load stylesheets -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">                <!-- Font Awesome -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">                                      <!-- Bootstrap style -->
+    <link rel="stylesheet" type="text/css" href="/css/datepicker.css"/>
+    <link rel="stylesheet" type="text/css" href="/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/slick/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">                                   <!-- Templatemo style -->
+      </head>
+      <body>
+        <div class="tm-main-content" id="top">
+            <div class="tm-top-bar-bg"></div>
+            <div class="tm-top-bar" id="tm-top-bar">
+                <div class="container">
+                    <div class="row">
+                        <nav class="navbar navbar-expand-lg narbar-light">
+                            <a class="navbar-brand mr-auto" href="/">
+                                <img src="/img/logo.png" alt="Site logo">
+                                TRS
+                            </a>
+                            <button type="button" id="nav-toggle" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div id="mainNav" class="collapse navbar-collapse tm-bg-white">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/destination/custom-tour-plan">Personalized Plan</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/destination/free-places">Free Places</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Catagories
+                                      </a>
+                                        <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+                                        <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                                          <a class="dropdown-item" href="/destination/category/Nature"><i class="fa fa-leaf" aria-hidden="true"></i> Nature</a>
+                                          <a class="dropdown-item" href="/destination/category/Park"><i class="fa fa-pagelines" aria-hidden="true"></i> Park</a>
+                                          <a class="dropdown-item" href="/destination/category/Relaxing"><i class="fa fa-coffee" aria-hidden="true"></i></i> Relaxing</a>
+                                          <a class="dropdown-item" href="/destination/category/Swimming"><i class="fa fa-bath" aria-hidden="true"></i> Swimming</a>
+                                          <a class="dropdown-item" href="/destination/category/Museum"><i class="fa fa-building" aria-hidden="true"></i> Museum</a>
+                                          <a class="dropdown-item" href="/destination/category/Historical"><i class="fa fa-leaf" aria-hidden="true"></i> Historical</a>
+                                          <a class="dropdown-item" href="/destination/category/Cathedral"><i class="fa fa-superpowers" aria-hidden="true"></i> Cathedral</a>
+                                          <a class="dropdown-item" href="/destination/category/Sport"><i class="fa fa-futbol-o" aria-hidden="true"></i> Sport</a>
+                                        </div>
+                                      </li>
+                                      <li class="nav-item">
+                                        <a href="/user/profile/savemoney" class="nav-link">Save Money</a>
+                                    </li>
+                                    <!-- <li class="nav-item">
+                                        <a class="nav-link" href="#">Contact Us</a>
+                                    </li> -->
+                                    <% if(username) { %>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= username%></a>
+                                            <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+                                        <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="/user/profile"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+                                            <a class="dropdown-item" href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a>
+                                        </div>
+                                    </li>
+                                    <% } else { %>
+                                    <li class="nav-item">
+                                        <a href="/user/signup" class="nav-link"><i class="fa fa-sign-in" aria-hidden="true"></i> Signup</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/user/signin" class="nav-link"><i class="fa fa-user" aria-hidden="true"></i> Signin</a>
+                                    </li>
+                                    <% } %>
+                                </ul>
+                        </div>
+                    </nav>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- .tm-top-bar -->

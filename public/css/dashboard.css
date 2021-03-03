@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto';
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.flex-container>div {
+    padding: 10px;
+    background-color: #f3f3f3;
+    margin: 10px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.flex-container div:hover {
+    background: #d3d1d1;
+}
+
+.flex-container a, p {
+    color: #000000;
+    text-decoration: none;
+    margin-top: 10px;
+}
+#options{
+    margin-top: 40px;
+}
+
+.alert a{
+    text-decoration: none;
+    color: #333333;
+}
+.barGraph h5{
+    color: #dc3545;
+}
+
+#footer{
+    background: lightgray;
+}
+.footer-content{
+    padding: 20px 0 0 0;
+}

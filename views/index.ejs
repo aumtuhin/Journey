@@ -1,0 +1,247 @@
+<%- include('./layouts/header') %>
+<div class="tm-page-wrap mx-auto">
+    <section class="tm-banner">
+        <div class="tm-container-outer tm-banner-bg">
+            <div class="container">
+                <div class="row tm-banner-row tm-banner-row-header">
+                    <div class="col-xs-12">
+                        <div class="tm-banner-header">
+                            <h1 class="text-uppercase tm-banner-title">Let's begin</h1>
+                            <img src="img/dots-3.png" alt="Dots">
+                            <p class="tm-banner-subtitle">We assist you to choose the best.</p>
+                            <a href="javascript:void(0)" class="tm-down-arrow-link"><i
+                                    class="fa fa-2x fa-angle-down tm-down-arrow"></i></a>
+                        </div>
+                    </div> <!-- col-xs-12 -->
+                </div> <!-- row -->
+                <div class="row tm-banner-row" id="tm-section-search">
+                    <form action="/destination/search/city" method="POST" class="tm-search-form tm-section-pad-2">
+                        <div class="form-row tm-search-form-row">
+                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1 autocomplete">
+                                <label for="inputCity">Choose Your Destination</label>
+                                <input name="city" type="text" class="form-control" id="freeCity" placeholder="Type City...">
+                            </div>
+                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                                <label for="btnSubmit">&nbsp;</label>
+                                <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="btnSubmit">Search Places</button>
+                            </div>
+                        </div> <!-- form-row -->
+                    </form>
+                </div> <!-- row -->
+                <div class="tm-banner-overlay"></div>
+            </div> <!-- .container -->
+        </div> <!-- .tm-container-outer -->
+    </section>
+
+    <section class="p-5 tm-container-outer tm-bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
+                    <h2 class="text-uppercase mb-4">Your <strong>Journey</strong> is our priority</h2>
+                    <p class="mb-4">Nullam auctor, sapien sit amet lacinia euismod, lorem magna lobortis massa, in
+                        tincidunt mi metus quis lectus. Duis nec lobortis velit. Vivamus id magna vulputate, tempor ante
+                        eget, tempus augue. Maecenas ultricies neque magna.</p>
+                    <a href="#" class="text-uppercase btn-primary tm-btn">Continue explore</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="most-places">
+        <div class="container text-center">
+            <h3>Most Visited Places</h3>
+        </div>
+    </section>
+    <div class="tm-container-outer" id="tm-section-2">
+        <% var section = 0; popularPlaces.forEach(function(place) { %>
+        <% section++; %>
+        <% if(section==2) { %>
+        <section class="tm-slideshow-section tm-slideshow-section-reverse">
+        <% } else { %>
+        <section class="tm-slideshow-section">
+        <% } %>
+            <div class="tm-slideshow">
+                <img class="img-responsive" src="<%= place.imgUrl %>" alt="Image">
+                <img class="img-responsive" src="<%= place.imgUrl %>" alt="Image">
+                <img class="img-responsive" src="<%= place.imgUrl %>" alt="Image">
+            </div>
+            <div class="tm-slideshow-description tm-bg-primary">
+                <h2 class=""><%= place.name %></h2>
+                <p><%= place.description.replace(/^(.{300}[^\s]*).*/, "$1"); %> ...</p>
+                <a href="/destination/place/<%= place.id%>" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">Continue Reading</a>
+            </div>
+        </section>
+        <% }); %>
+    </div>
+    <div class="tm-container-outer" id="tm-section-3">
+        <ul class="nav nav-pills tm-tabs-links">
+            <% var i=1; popularCities.forEach(function(cities){ %>
+            <li class="tm-tab-link-li city-name" data-name="<%= cities.name%>" id="cityName">
+                <a href="#<%= i++ %>a" data-toggle="tab" class="tm-tab-link">
+                    <img src="/img/<%= cities.name%>.png" alt="Image" class="img-fluid">
+                    <%= cities.name%>
+                </a>
+            </li>
+            <% }); %>
+        </ul>
+        <div class="tab-content clearfix">
+            <!-- Tab 1 -->
+            <div class="tab-pane fade show active" id="1a">
+                <div class="tm-recommended-place-wrap">
+                    <% city1Places.forEach(function(place, i){ %>
+                    <div class="tm-recommended-place">
+                        <img src="<%=place.imgUrl%>" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title"><%= place.name %></h3>
+                            <p class="tm-text-highlight">Activity: <%= place.activity %></p>
+                            <p><%= place.description.replace(/^(.{300}[^\s]*).*/, "$1"); %> ...</p>
+                        </div>
+                        <a href="/destination/place/<%= place.id%>" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">€ <%= place.cost %></p>
+                            <p class="tm-recommended-price-link">Continue Reading..</p>
+                        </a>
+                    </div>
+                   <% });%>
+                </div>
+                <!-- <a href="#" class="text-uppercase btn-primary tm-btn mx-auto tm-d-table">Show More Places</a> -->
+            </div> <!-- tab-pane -->
+            <!-- Tab 1 -->
+            <div class="tab-pane fade" id="2a">
+                <div class="tm-recommended-place-wrap">
+                    <% city2Places.forEach(function(place){ %>
+                    <div class="tm-recommended-place">
+                        <img src="<%=place.imgUrl%>" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title"><%= place.name %></h3>
+                            <p class="tm-text-highlight">Activity: <%= place.activity %></p>
+                            <p><%= place.description.replace(/^(.{300}[^\s]*).*/, "$1"); %> ...</p>
+                        </div>
+                        <a href="/destination/place/<%= place.id%>" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">€ <%= place.cost %></p>
+                            <p class="tm-recommended-price-link">Continue Reading..</p>
+                        </a>
+                    </div>
+                   <% });%>
+                </div>
+            </div> <!-- tab-pane -->
+            <!-- Tab 1 -->
+            <div class="tab-pane fade" id="3a">
+                <div class="tm-recommended-place-wrap">
+                    <% city3Places.forEach(function(place){ %>
+                    <div class="tm-recommended-place">
+                        <img src="<%=place.imgUrl%>" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title"><%= place.name %></h3>
+                            <p class="tm-text-highlight">Activity: <%= place.activity %></p>
+                            <p><%= place.description.replace(/^(.{300}[^\s]*).*/, "$1"); %> ...</p>
+                        </div>
+                        <a href="/destination/place/<%= place.id%>" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">€ <%= place.cost %></p>
+                            <p class="tm-recommended-price-link">Continue Reading..</p>
+                        </a>
+                    </div>
+                   <% });%>
+                </div>
+            </div> <!-- tab-pane -->
+            <!-- Tab 1 -->
+            <div class="tab-pane fade" id="4a">
+                <div class="tm-recommended-place-wrap">
+                    <% city4Places.forEach(function(place){ %>
+                    <div class="tm-recommended-place">
+                        <img src="<%=place.imgUrl%>" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title"><%= place.name %></h3>
+                            <p class="tm-text-highlight">Activity: <%= place.activity %></p>
+                            <p><%= place.description.replace(/^(.{300}[^\s]*).*/, "$1"); %> ...</p>
+                        </div>
+                        <a href="/destination/place/<%= place.id%>" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">€ <%= place.cost %></p>
+                            <p class="tm-recommended-price-link">Continue Reading..</p>
+                        </a>
+                    </div>
+                   <% });%>
+                </div>
+            </div> <!-- tab-pane -->
+            <!-- Tab 1 -->
+            <div class="tab-pane fade" id="5a">
+                <div class="tm-recommended-place-wrap">
+                    <% city5Places.forEach(function(place){ %>
+                    <div class="tm-recommended-place">
+                        <img src="<%=place.imgUrl%>" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title"><%= place.name %></h3>
+                            <p class="tm-text-highlight">Activity: <%= place.activity %></p>
+                            <p><%= place.description.replace(/^(.{300}[^\s]*).*/, "$1"); %> ...</p>
+                        </div>
+                        <a href="/destination/place/<%= place.id%>" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">€ <%= place.cost %></p>
+                            <p class="tm-recommended-price-link">Continue Reading..</p>
+                        </a>
+                    </div>
+                   <% });%>
+                </div>
+            </div> <!-- tab-pane -->
+            <!-- Tab 1 -->
+            <div class="tab-pane fade" id="6a">
+                <div class="tm-recommended-place-wrap">
+                    <% city6Places.forEach(function(place){ %>
+                    <div class="tm-recommended-place">
+                        <img src="<%=place.imgUrl%>" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title"><%= place.name %></h3>
+                            <p class="tm-text-highlight">Activity: <%= place.activity %></p>
+                            <p><%= place.description.replace(/^(.{300}[^\s]*).*/, "$1"); %> ...</p>
+                        </div>
+                        <a href="/destination/place/<%= place.id%>" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">€ <%= place.cost %></p>
+                            <p class="tm-recommended-price-link">Continue Reading..</p>
+                        </a>
+                    </div>
+                   <% });%>
+                </div>
+            </div> <!-- tab-pane -->
+             <!-- Tab 1 -->
+             <div class="tab-pane fade" id="7a">
+                <div class="tm-recommended-place-wrap">
+                    <% city7Places.forEach(function(place){ %>
+                    <div class="tm-recommended-place">
+                        <img src="<%=place.imgUrl%>" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title"><%= place.name %></h3>
+                            <p class="tm-text-highlight">Activity: <%= place.activity %></p>
+                            <p><%= place.description.replace(/^(.{300}[^\s]*).*/, "$1"); %> ...</p>
+                        </div>
+                        <a href="/destination/place/<%= place.id%>" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">€ <%= place.cost %></p>
+                            <p class="tm-recommended-price-link">Continue Reading..</p>
+                        </a>
+                    </div>
+                   <% });%>
+                </div>
+            </div> <!-- tab-pane -->
+    </div>
+
+    <div class="tm-container-outer tm-position-relative" id="tm-section-4">
+        <div id="google-map"></div>
+        <form action="index.html" method="post" class="tm-contact-form">
+            <div class="form-group tm-name-container">
+                <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name"
+                    required />
+            </div>
+            <div class="form-group tm-email-container">
+                <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email"
+                    required />
+            </div>
+            <div class="form-group">
+                <input type="text" id="contact_subject" name="contact_subject" class="form-control"
+                    placeholder="Subject" required />
+            </div>
+            <div class="form-group">
+                <textarea id="contact_message" name="contact_message" class="form-control" rows="9"
+                    placeholder="Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary tm-btn-primary tm-btn-send text-uppercase">Send Message
+                Now</button>
+        </form>
+    </div> <!-- .tm-container-outer -->
+<%- include('./layouts/footer') %>

@@ -1,0 +1,17 @@
+<%- include('../layouts/dashboardHeader') %>
+<!-- add city form -->
+<section id="add-category">
+    <div class="container">
+        <br><br>
+        <h2 class="text-center">Add New Category</h2><br>
+        <form action="/dashboard/add-category" method="POST">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Category Name" name="categoryName" required>
+            </div>
+            <button class="btn btn-primary" type="submit">Add Category</button>
+        </form>
+    </div>
+</section>
+<!-- end add city form -->
+
+<%- include('../layouts/dashboardFooter') %>

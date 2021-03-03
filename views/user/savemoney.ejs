@@ -1,0 +1,107 @@
+<%- include('../layouts/header') %>
+<section id="savemoney">
+    <div class="container">
+        <div class="heading text-center">
+            <h3>Save Money For Travel</h3>
+        </div>
+        <form onsubmit="return mySubmitFunction(event);">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter your destination" required> 
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="amount" placeholder="Enter your ammount" required oninput="myFunction();">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="months" placeholder="By how many months you want to pay" required oninput="myFunction();">
+            </div>
+            <div class="form-group">
+                <h5 class="info">You will pay €<span class="money-per-month" id="perMonth">0</span> per month, **you can see your balance in your profile milstone.</h5>
+            </div>
+            <h4>Payments Methods: </h4>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="payment" id="banktransfer">
+                <label class="form-check-label btn btn-primary bank1" for="banktransfer">
+                Monthly Bank Transfer
+                </label>
+            </div>
+            <div id="bank1">
+                <h5 style="color: #d35400;" >Your username is your reference or purpose of payment</h5>
+                <h5>Account Info:</h5>
+                <h5>Name: TRS GMBH</h5>
+                <h5>IBAN: DE00021202010201020102102</h5>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="payment" id="banktransfer2" required>
+                <label class="form-check-label btn btn-primary bank2" for="banktransfer2">
+                Monthly Bank Transfer SEPA, ** we will deduct from your account 
+                </label>
+            </div>
+            <div id="bank2">
+                <div class="form-group">
+                    <label>Please enter your Iban</label>
+                    <input type="text" class="form-control" value="DE">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Beneficiary Name ">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Bank name">
+                </div>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+                <label class="form-check-label" for="flexCheckDefault">
+                  I have read and accept the <a href="#">privacy and policy.</a>
+                </label>
+            </div>
+            <button class="btn btn-danger submit" type="submit">Submit</button>
+        </form>
+    </div>
+</section>
+<section style="padding-bottom: 200px;" id="successMsg">
+    <div class="spinning text-center">
+        <img src="/img/spin.gif" alt="">
+    </div>
+    <div class="success text-center">
+        <h3>You have successfully saved money!</h3>
+        <img src="https://lh3.googleusercontent.com/proxy/K-z66lbMyf0Ioe3NGIygqM2Ghx5T__51BC-fgyMv4KwA0eIyBH7CqY34ckfbaT0LNjeoY-0GLRlMnwnRa9DjcXHbnhzNKcRSk36nOKT7ThdPmQCXEWZW71BYCA" alt="">
+    </div>
+</section>
+<div style="padding-bottom: 200px;"></div>
+<%- include('../layouts/footer') %>
+<script>
+    function myFunction(){
+        var amount = parseFloat(document.getElementById('amount').value);
+        var months = parseInt(document.getElementById('months').value);
+        var perMonth = (amount/months).toFixed(2);
+        document.getElementById('perMonth').innerHTML = perMonth;
+    }
+
+    function mySubmitFunction(e) {
+        e.preventDefault();
+    }
+
+$(document).ready(function(){
+  $(".bank1").click(function(){
+    $("#bank1").toggle(200);
+    $("#bank2").hide(200);
+  });
+  $(".bank2").click(function(){
+    $("#bank2").toggle(200);
+    $("#bank1").hide(200);
+  });
+
+  //spinning loadig then show success
+  $(".submit").click(function(){
+      $('#savemoney').hide();
+      $('.spinning').show();
+      setInterval(function(){
+        $('.spinning').hide();
+          $('.success').show();
+      }, 5000);
+      setInterval(function(){
+        document.location.href = '/user/profile'
+      }, 8000);
+  });
+});
+</script>

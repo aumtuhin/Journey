@@ -1,0 +1,78 @@
+<%- include('../layouts/header') %>
+<section id="custom-search">
+    <div class="container">
+        <h4 class="text-center">Please select your preferences</h4>
+        <div class="row tm-banner-row" id="tm-section-search">
+            <form action="/destination/custom-tour-plan" method="POST" class="tm-search-form tm-section-pad-2">
+                <div class="form-row tm-search-form-row">
+                    <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1 autocomplete">
+                        <label for="inputCity">Choose Your Destination</label>
+                        <input name="city" type="text" class="form-control" id="freeCity" placeholder="Type your destination..." required>
+                    </div>
+                    <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
+                        <label for="inputCheckIn">Check In Date</label>
+                        <input name="checkIn" type="date" value="10/1/2021" class="form-control" id="inputCheckIn" placeholder="Check In" required>
+                    </div>
+                    <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
+                        <label for="inputCheckOut">Check Out Date</label>
+                        <input name="checkOut" type="date" value="11/1/2021" class="form-control" id="inputCheckOut" placeholder="Check Out" required>
+                    </div>
+                </div> <!-- form-row -->
+                <div class="slidecontainer">
+                    <input type="range" min="1" max="1000" value="50" class="slider" id="myRange" name="cost">
+                    <p>Budget: <span id="demo"></span></p>
+                </div>
+                <h4 class="text-center">Please select categories</h4>
+                <div class="category-container">
+                    <% categories.forEach(function(category) { %>
+                    <div class="category-item text-center" value="<%= category.name %>" count="0">
+                        <i class="fa fa-pagelines" aria-hidden="true"></i>
+                        <p class="text-center"><%= category.name %></p>
+                        <input type="hidden" value="" name="categories" disabled>
+                    </div>
+                    <% }); %>
+                </div>
+                <h4 class="text-center">Please select activity</h4>
+                <div class="category-container">
+                    <div class="category-item text-center" value="Indoor" count="0">
+                        <i class="fa fa-bath" aria-hidden="true"></i>
+                        <p class="text-center">Indoor</p>
+                        <input type="hidden" value="" name="activities" disabled>
+                    </div>
+                    <div class="category-item text-center" value="Indoor" count="0">
+                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                        <p class="text-center">Outdoor</p>
+                        <input type="hidden" value="" name="activities" disabled>
+                    </div>
+                </div>
+                <button class="btn btn-primary">Submit</button>
+            </form>
+        </div> <!-- row -->
+    </div>
+</section>
+<%- include('../layouts/footer') %>
+<script>
+
+    //category selection
+    $(".category-item").click(function(){
+        var category = $(this).attr('value');
+        var count = parseInt($(this).attr('count'));
+        if (count == 0) {
+            $(this).children('input').removeAttr('disabled');
+            $(this).children('input').val(category);
+            $(this).css({
+                "background-color": "#1abc9c",
+                "color": "#ecf0f1"
+            });
+            $(this).attr('count', '1');
+        } else {
+            $(this).children('input').attr('disabled');
+            $(this).attr('count', '0');
+            $(this).css({
+                "background-color": "#f3f3f3",
+                "color": "#333"
+            });
+        }
+        
+    });
+</script>

@@ -1,0 +1,18 @@
+<%- include('../layouts/dashboardHeader') %>
+<!-- add city form -->
+<section id="add-city">
+    <div class="container">
+        <br><br>
+        <h2 class="text-center">Add New City</h2><br>
+        <form action="/dashboard/add-city" method="POST">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="City Name" name="cityName" value="" required><br>
+                <input type="text" class="form-control" placeholder="State" name="state" required value="NRW"><br>
+                <button class="btn btn-primary" type="submit">Add City</button>
+            </div>
+        </form>
+    </div>
+</section>
+<!-- end add city form -->
+
+<%- include('../layouts/dashboardFooter') %>

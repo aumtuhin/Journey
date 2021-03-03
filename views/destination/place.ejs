@@ -1,0 +1,74 @@
+<%- include('../layouts/header') %>
+<section id="destination">
+        <div class="container">
+          <% place.forEach(function(p) { %>
+            <div class="row">
+                <div class="col-md-7">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img class="d-block w-100 place-img" src="<%= p.imgUrl %>">
+                          </div>
+                          <div class="carousel-item">
+                            <img class="d-block w-100 place-img" src="<%= p.imgUrl %>" alt="Second slide">
+                          </div>
+                          <div class="carousel-item">
+                            <img class="d-block w-100 place-img" src="<%= p.imgUrl %>" alt="Third slide">
+                          </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </div>
+                      <% if(weather == null) { %>
+                        <div class="weather-info">
+                          <div class="alert alert-danger" role="alert">
+                            Weather API currently not working
+                          </div>
+                        </div>
+                      <% } else{ %>
+                        <div class="weather-info">
+                          <img src="<%= weather.current.condition.icon %>" alt="">
+                          <h2><%= weather.current.temp_c %>° <span class="feels-like">Feels like <%= Math.round(weather.current.feelslike_c); %>°</span></h2>
+                          <p><span class="badge badge-info"><%= weather.current.condition.text %> </span><span class="wind-speed"> Wind <%= weather.current.wind_kph%> kph</span></p>
+                         <p><%= weather.location.name %></p>
+                         <p><%= weather.location.region %></p>
+                        </div>
+                      <% } %>
+                      <div class="corona-info">
+                        <div class="corona-container">
+                          <h2>Germany</h2>
+                          <p>Total Infected: <span class="coro-number-in"><%= coronaCountry.infected %></span></p>
+                          <p>Total Death: <span class="coro-number-de"><%= coronaCountry.deceased %></p>
+                          <h2><%= coronaStates.region%></h2>
+                          <p>Total Infected: <span class="coro-number-in"><%= coronaStates.infectedCount %></span></p>
+                          <p>Total Death: <span class="coro-number-de"><%= coronaStates.deceasedCount %></span></p>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-md-5">
+                  <h1><%= p.name %>, <span class="place-city"><%= p.city %></span></h1>
+                  <h3>€ <%= p.cost %></h3>
+                  <p><%= p.description %></p>
+                  <p><span class="badge badge-info">Address: </span> <%= p.address%></p>
+                  <p><span class="badge badge-info">Activity: </span> <%= p.activity %></p>
+                  <p><span class="badge badge-info">Open: </span> <%= p.time %></p>
+                  <% if(p.cost != 0) { %>
+                    <a href="#" class="btn btn-default">Add To Wishlist</a>
+                  <% } %>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </section>
+<%- include('../layouts/footer') %>

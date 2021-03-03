@@ -1,0 +1,35 @@
+<%- include('../layouts/header') %>
+<section id="places">
+    <div class="container">
+        <div class="heading text-center">
+            <h2>Top Free Places in <%= city%></h2>
+        </div>
+        <div class="search" id="app">
+            <form action="/destination/free-places" method="POST">
+                <div class="form-group autocomplete">
+                    <input name="city" class="form-control" id="freeCity" type="text" placeholder="Duisburg..." value="">
+                </div>
+            </form>
+        </div>
+        <% if(places === undefined || places.length == 0) { %>
+        <div class="no-result text-center">
+            <img class="img img-responsive" src="https://www.eyouthegypt.com/uploads/no_result.gif" alt="">
+        </div>
+        <% } %>
+        <div class="row">
+            <% places.forEach(function(place){ %>
+            <div class="col-md-3">
+                <div class="card" style="width: 17rem;">
+                    <img src="<%= place.imgUrl%>" class="card-img-top img-responsive" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= place.name%></h5>
+                      <p class="card-text"><%= place.description.replace(/^(.{100}[^\s]*).*/, "$1"); %> ...</p>
+                      <a href="/destination/place/<%= place.id %>" class="btn btn-primary">See More..</a>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</section>
+<%- include('../layouts/footer') %>
