@@ -1,7 +1,7 @@
 {
   "name": "journey",
   "version": "1.0.0",
-  "description": "an intelligent based travel recommendation system",
+  "description": "A travel information app",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
