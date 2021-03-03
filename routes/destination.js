@@ -27,7 +27,7 @@ router.get('/place/:id', (req, res) => {
                     weather: null
                 });
             } else {
-                request('https://api.apify.com/v2/key-value-stores/OHrZyNo9BzT6xKMRD/records/LATEST?disableRedirect=true', (err, respo, coronaData) => {
+                request('https://api.apify.com/v2/key-value-stores/OHrZyNo9BzT6xKMRD/records/LATEST?disableRedirect=true', (err, response, coronaData) => {
                     if(err) {
                         res.render('destination/place', {
                             place: place,
