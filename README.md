@@ -21,3 +21,8 @@ The app is build with these following technologies:
 
 ## Place Details Page
 ![Place Details](./docs/images/place-details.png)
+
+We also worked with live weather data as well live corona update of the corresponding place
+
+## Live Weather and Corona Update
+![home page](./docs/images/corona-weather.png)
