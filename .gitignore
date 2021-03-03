@@ -1,5 +1,2 @@
 # dependencies
 /node_modules
-
-# Config
-/config/db.js
