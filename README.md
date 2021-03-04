@@ -1,6 +1,6 @@
 # Journey a travel information app
 
-In this we basically worked with NRW travel data. Traveller can easily search places by city. There are also places by different categories.
+In this app we basically worked with NRW travel data. Traveller can easily search places by city. There are also places by different categories.
 
 The app is build with these following technologies:
 * [NodeJS](https://nodejs.org)
