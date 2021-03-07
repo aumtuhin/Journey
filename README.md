@@ -27,7 +27,7 @@ We also worked with live weather data as well live corona update of the correspo
 ![home page](./docs/images/corona-weather.png)
 
 ## Installation and Configuration
-Please make sure you have following software installed in your system:
+Please make sure you have the following software installed in your system:
 * Node.js
 * NPM
 * Git
@@ -59,11 +59,11 @@ nodemon
 
 As we are using mongoDB database you can either use mongoDB from your local computer or you can use mongoDB database from mongoDB official site
 
-* Go to [MongoDB](https://www.mongodb.com/) website
+* Go to the [MongoDB](https://www.mongodb.com/) website
 * Create an account free or sign in
 * Create a new project and cluster
 * Click on connection and copy the connection string
-* Go to db.js file from Config folder and pase it as below: 
+* Go to the db.js file from Config folder and pase it as below: 
 
 ```
 module.exports = {
