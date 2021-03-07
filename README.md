@@ -27,7 +27,7 @@ We also worked with live weather data as well live corona update of the correspo
 ![home page](./docs/images/corona-weather.png)
 
 ## Installation and Configuration
-Please make sure you have the following software installed in your system:
+Please make sure you have these following software installed in your system:
 * Node.js
 * NPM
 * Git
