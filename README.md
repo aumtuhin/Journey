@@ -22,7 +22,7 @@ The app is build with these following technologies:
 ## Place Details Page
 ![Place Details](./docs/images/place-details.png)
 
-We also worked with live weather data as well live corona update of the corresponding place
+We also worked with the live weather data as well live corona update of the corresponding place
 ## Live Weather and Corona Update
 ![home page](./docs/images/corona-weather.png)
 
@@ -60,7 +60,7 @@ nodemon
 As we are using mongoDB database you can either use mongoDB from your local computer or you can use mongoDB database from mongoDB official site
 
 * Go to the [MongoDB](https://www.mongodb.com/) website
-* Create an account free or sign in
+* Create an account for free or sign in
 * Create a new project and cluster
 * Click on connection and copy the connection string
 * Go to the db.js file from Config folder and pase it as below: 
